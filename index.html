@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+
+<html lang="en-US" class="no-js">
+
+	<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+	
+	<title>Panels - a jQuery library for off canvas elements</title>
+	<meta name="description" content="Panels - a jQuery library for off canvas elements
+">
+	
+	<meta property="og:site_name" content="Panels - a jQuery library for off canvas elements">
+
+	
+		<meta property="og:title" content="Panels - a jQuery library for off canvas elements">
+		<meta name="twitter:title" content="Panels - a jQuery library for off canvas elements">
+	
+	
+	
+		<meta property="og:type" content="website">
+	
+	
+	
+		<meta property="og:description" content="Panels - a jQuery library for off canvas elements
+">
+		<meta name="twitter:description" content="Panels - a jQuery library for off canvas elements
+">
+	
+	
+	
+		<meta property="og:url" content="http://yourdomain.com/index.html">
+	
+	
+<meta property="og:image" content="http://yourdomain.com/inc/img/social-image.png">
+<meta property="fb:app_id" content="your-app-id-here">
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@quoid">
+<meta name="twitter:creator" content="@quoid">
+
+	
+		<meta name="twitter:title" content="Panels - a jQuery library for off canvas elements">
+	
+	
+	
+		<meta name="twitter:description" content="Panels - a jQuery library for off canvas elements
+">
+	
+
+<meta name="twitter:image" content="http://yourdomain.com/inc/img/social-image.png">
+
+	
+		<meta itemprop="name" content="Panels - a jQuery library for off canvas elements">
+	
+
+	
+		<meta itemprop="description" content="Panels - a jQuery library for off canvas elements
+">
+	
+	
+<meta itemprop="image" content="http://yourdomain.com/inc/img/social-image.png">
+	
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="inc/css/prism.css">
+	
+	<link rel="stylesheet" href="main.css">
+	<link rel="canonical" href="http://yourdomain.com/">
+	<link rel="alternate" type="application/rss+xml" title="Panels - a jQuery library for off canvas elements" href="http://yourdomain.com/feed.xml" />
+	
+	<script src="inc/js/modernizr.min.js"></script>
+</head>
+	
+	<body>		
+		
+		<div class="panel top slide">
+	<div id="top-content">
+	<h2>Top panel w/slide animation</h2>
+	<p>Markup</p>
+	<pre class="language-markup">
+	    <code>
+<!-- 			         -->&lt;div class="panel top slide"&gt; 
+<!-- 			         -->	&lt;!-- panel content --&gt; 
+<!-- 			         -->&lt;div/&gt;
+	    </code>
+	</pre>
+	<button class="top-panel-trigger">Close Panel</button>
+</div>
+<div id="bottom-content" class="hide">
+	<h2>Bottom panel w/push animation & full-page</h2>
+	<p>Markup</p>
+	<pre class="language-markup">
+	    <code>
+<!-- 			         -->&lt;div class="full-page panel bottom push"&gt; 
+<!-- 			         -->	&lt;!-- panel content --&gt; 
+<!-- 			         -->&lt;div/&gt;
+	    </code>
+	</pre>
+	<button class="bottom-panel-trigger">Close Panel</button>
+</div>
+<div id="left-content" class="hide">
+	<h2>Left panel w/reveal animation & force-close</h2>
+	<p>Markup</p>
+	
+	<button class="left-panel-trigger">Close Panel</button>
+</div>
+<div id="right-content" class="hide">
+	<h2>Right panel w/push animation & custom width</h2>
+	<p>Markup</p>
+	<pre class="language-markup">
+	    <code>
+<!-- 			         -->&lt;div class="panel push right"&gt; 
+<!-- 			         -->	&lt;!-- panel content --&gt; 
+<!-- 			         -->&lt;div/&gt;
+	    </code>
+	</pre>
+	<p>CSS</p>
+	<pre>
+	    <code class="language-css">
+<!-- 			         -->.panel.right {
+<!-- 				     -->    width: 85%;
+<!-- 			         -->}
+	    </code>
+	</pre>
+	<button class="right-panel-trigger">Close Panel</button>
+</div>
+	<div id="demo-menu" class="hide">
+	<ul class="cf">
+		<li>
+			<a>About Us</a>
+		</li>
+		<li>
+			<a>Our Services</a>
+		</li>
+		<li>
+			<a>In The News</a>
+		</li>
+		<li>
+			<a>Contact Us</a>
+		</li>
+	</ul>
+	<button class="top-panel-trigger"><i class="icon-times"></i></button>
+</div>
+<div id="demo-message" class="hide">
+	<p>Hey, we use cookies; is that cool with you?
+	<ul class="cf">
+		<li>
+			<button class="bottom-panel-trigger">Sure.</button>
+		</li>
+		<li>
+			<button>Nope!</button>
+		</li>
+	</ul>
+</div>
+<div id="demo-page" class="hide">
+	<button class="left-panel-trigger"><i class="icon-times"></i></button>
+	<div class="content">
+		<h3>Some Page Title!<span>October 21st, 2015</h3>
+		<figure></figure>
+		<p class="lorem">When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then she continued her way. On her way she met a copy.</p>
+<p class="lorem">The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country. But nothing the copy said could convince her and so it didn’t take long until a few insidious Copy Writers ambushed her, made her drunk with Longe and Parole and dragged her into their agency, where they abused her for their projects again and again. And if she hasn’t been rewritten, then they are still using her. Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+	</div>
+</div>
+</div>
+<main class="panel-wrapper">
+	<header>
+	<h1>
+		Panels
+		<span>
+			<a href="https://github.com/quoid/panels">GitHub Repo</a>
+		</span>
+	</h1>
+	<nav>
+		<a class="current top">top</a>
+		<a class="bottom">bottom</a>
+		<a class="left">left</a>
+		<a class="right">right</a>
+	</nav>
+</header>
+	<p>Panels is a small , (< 1kb gzipped), <a href="https://jquery.com">jQuery</a> library for off canvas elements.</p>
+<p>You can use the panels for <a id="menu">menus</a>, <a id="message-example">important messages</a>, <a id="page-example">off canvas page elements</a>, or any other unique and interesting ways you might come up with.</p>
+	<button class="top-panel-trigger animated">Open Panel</button>
+	<p class="lorem">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+<p class="lorem">Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar. The Big Oxmox advised her not to do so, because there were thousands of bad Commas, wild Question Marks and devious Semikoli, but the Little Blind Text didn’t listen. She packed her seven versalia, put her initial into the belt and made herself on the way.</p>
+	<button class="top-panel-trigger animated">Open Panel</button>
+	<p class="lorem">When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then she continued her way. On her way she met a copy.</p>
+<p class="lorem">The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country. But nothing the copy said could convince her and so it didn’t take long until a few insidious Copy Writers ambushed her, made her drunk with Longe and Parole and dragged her into their agency, where they abused her for their projects again and again. And if she hasn’t been rewritten, then they are still using her. Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+</main>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="inc/js/jquery-1.11.3.min.js"><\/script>')</script>
+<script src="inc/js/velocity.min.js"></script>
+<script src="inc/js/velocity.ui.min.js"></script>
+<script src="inc/js/prism.js"></script>
+<script src="inc/js/panels.js"></script>
+<script src="inc/js/scripts.js"></script>
+	</body>
+
+</html>
