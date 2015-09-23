@@ -1,0 +1,164 @@
+@mixin background-opacity($color, $opacity) {
+	background: $color;
+	background: rgba($color, $opacity);
+}
+
+@mixin translate3d($x, $y, $z) {
+	-webkit-transform: translate3d($x, $y, $z);
+			transform: translate3d($x, $y, $z);
+}
+
+.panel {
+	background-color: lightblue;
+	position: fixed;
+	visibility: hidden;
+	
+	&.top,
+	&.bottom {
+		left: 0;
+		min-width: 100%;
+		max-width: 100%;
+		overflow-y: auto;
+		
+		&.full-page {
+			min-height: 100%;
+			max-height: 100%;
+		}
+		
+	}
+	
+	&.left,
+	&.right {
+		min-height: 100%;
+		max-height: 100%;
+		overflow-y: auto;
+		min-width: 280px;
+		top: 0;
+		
+		&.full-page {
+			min-width: 100%;
+			max-width: 100%;
+		}
+		
+	}
+	
+	&.top {
+		top: 0;
+	}
+	
+	&.bottom {
+		bottom: 0;
+	}
+	
+	&.left {
+		left: 0;
+	}
+	
+	&.right {
+		right: 0;
+	}
+	
+}
+
+.panel-wrapper {
+	position: relative;
+}
+
+[class*=panel-active], [class*="panel-active"] .panel-wrapper  /* prevent scrolling when panel active in mobile safari */ {
+	overflow: hidden;
+}
+
+.panel-wrapper:after {
+	@include background-opacity(#000, 0.25);
+	content: '';
+	opacity: 0;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 0;
+	height: 0;	
+}
+
+[class*=panel-active] .panel-wrapper:after {
+	width: 100%;
+	min-height: 100%;
+	opacity: 1;
+	overflow: hidden;
+}
+
+//animations
+.panel {
+	
+	&.slide, &.push, &.reveal {
+		-webkit-transition: -webkit-transform 0.5s;
+		transition: transform 0.5s;
+		
+		&.panel-focus {
+			visibility: visible;
+		}
+		
+	}
+	
+	&.top {
+		@include translate3d(0, -100% , 0);
+	}
+	
+	&.bottom {
+		@include translate3d(0, 100% , 0);
+	}
+	
+	&.left {
+		@include translate3d(-100%, 0 , 0);
+	}
+	
+	&.right {
+		@include translate3d(100%, 0 , 0);
+	}
+	
+	&.reveal {
+		@include translate3d(0, 0, 0);
+	}
+		
+}
+
+.top-panel-active > .top.panel,
+.right-panel-active > .right.panel,
+.bottom-panel-active > .bottom.panel,
+.left-panel-active > .left.panel {
+	@include translate3d(0, 0, 0);
+	visibility: visible;
+}
+
+.panel-wrapper {
+	-webkit-transition: -webkit-transform 0.5s;
+	transition: transform 0.5s;
+}
+
+.panel-wrapper:after {
+	-webkit-transition: opacity 0.5s, width 0.1s 0.4s, height 0.1s 0.4s;
+	transition: opacity 0.5s, width 0.1s 0.4s, height 0.1s 0.4s;
+}
+
+[class*=panel-active] .panel-wrapper:after {
+	-webkit-transition: opacity 0.5s 0.1s, width 0.1s, height 0.1s;
+	transition: opacity 0.5s 0.1s, width 0.1s, height 0.1s;
+}
+
+//z-index
+.panel {
+	z-index: 30;
+	
+	&.reveal {
+		z-index: 10;
+		
+		&.panel-focus {
+			z-index: 15;
+		}
+		
+	}
+	
+}
+
+.panel-wrapper {
+	z-index: 20;
+}
