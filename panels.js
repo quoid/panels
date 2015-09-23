@@ -1,3 +1,5 @@
+/*! panels by quoid v0.1.0 | GPL V2 License | http://quoid.github.io/panels/index.html */
+
 var transEnd = 'transitionend webkitTransitionEnd oTransitionEnd'
 
 $('[class*="panel-trigger"]').on('click', function() {
