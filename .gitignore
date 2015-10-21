@@ -1,2 +1,5 @@
-_site/
-.sass-cache/
+*
+!.gitignore
+!README.md
+!LICENSE
+!src/**
