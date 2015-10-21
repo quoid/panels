@@ -1,5 +1,8 @@
 *
+
 !.gitignore
-!README.md
-!LICENSE
-!src/**
+!panels.js
+!panels.scss
+!panels.css
+
+!*/
