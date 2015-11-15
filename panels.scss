@@ -1,39 +1,38 @@
-@mixin background-opacity($color, $opacity) {
-	background: $color;
-	background: rgba($color, $opacity);
-}
-
 @mixin translate3d($x, $y, $z) {
 	-webkit-transform: translate3d($x, $y, $z);
 			transform: translate3d($x, $y, $z);
 }
 
+$trans-time: 325ms;
+$panel-z: 300;
+$reveal-panel-z: 150;
+
 .panel {
 	background-color: lightblue;
 	position: fixed;
-	visibility: hidden;
 	
-	&.top,
-	&.bottom {
+	&.panel-top,
+	&.panel-bottom {
 		left: 0;
 		min-width: 100%;
 		max-width: 100%;
-		overflow-y: auto;
 		
 		&.full-page {
-			min-height: 100%;
-			max-height: 100%;
+			min-height: 100vh;
+			max-height: 100vh;
 		}
 		
 	}
 	
-	&.left,
-	&.right {
-		min-height: 100%;
-		max-height: 100%;
-		overflow-y: auto;
-		min-width: 280px;
+	&.panel-left,
+	&.panel-right {
+		min-height: 100vh;
+		max-height: 100vh;
+		width: 280px;
 		top: 0;
+		overflow-x: hidden;
+		overflow-y: auto;
+		-webkit-overflow-scrolling: touch;
 		
 		&.full-page {
 			min-width: 100%;
@@ -42,123 +41,118 @@
 		
 	}
 	
-	&.top {
+	&.panel-top {
 		top: 0;
 	}
 	
-	&.bottom {
+	&.panel-bottom {
 		bottom: 0;
 	}
 	
-	&.left {
+	&.panel-left {
 		left: 0;
 	}
 	
-	&.right {
+	&.panel-right {
 		right: 0;
 	}
 	
 }
 
-.panel-wrapper {
+.panel-pusher {
+	background-color: inherit;
 	position: relative;
+	
+	&::after {
+		background-color: #000;
+		content: "";
+		min-height: 100%;
+		width: 100%;
+		position: fixed;
+		top: 0;
+		right: 0;
+		opacity: 0;
+	}
+	
 }
 
-[class*=panel-active], [class*="panel-active"] .panel-wrapper  /* prevent scrolling when panel active in mobile safari */ {
-	overflow: hidden;
+//z-indices
+.panel {
+	z-index: $panel-z;
+	
+	&.reveal-panel {
+		z-index: $reveal-panel-z;
+	}
+	
 }
 
-.panel-wrapper:after {
-	@include background-opacity(#000, 0.25);
-	content: '';
-	opacity: 0;
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 0;
-	height: 0;	
-}
-
-[class*=panel-active] .panel-wrapper:after {
-	width: 100%;
-	min-height: 100%;
-	opacity: 1;
-	overflow: hidden;
+.panel-pusher {
+	z-index: 200;
 }
 
 //animations
 .panel {
+	opacity: 0;
+	-webkit-transition: -webkit-transform $trans-time, z-index $trans-time;
+			transition: transform $trans-time, z-index $trans-time;
 	
-	&.slide, &.push, &.reveal {
-		-webkit-transition: -webkit-transform 0.5s;
-		transition: transform 0.5s;
-		
-		&.panel-focus {
-			visibility: visible;
-		}
-		
-	}
-	
-	&.top {
+	&.panel-top {
 		@include translate3d(0, -100% , 0);
 	}
 	
-	&.bottom {
+	&.panel-bottom {
 		@include translate3d(0, 100% , 0);
 	}
 	
-	&.left {
+	&.panel-left {
 		@include translate3d(-100%, 0 , 0);
 	}
 	
-	&.right {
+	&.panel-right {
 		@include translate3d(100%, 0 , 0);
 	}
 	
-	&.reveal {
+	&.reveal-panel {
 		@include translate3d(0, 0, 0);
 	}
-		
-}
-
-.top-panel-active > .top.panel,
-.right-panel-active > .right.panel,
-.bottom-panel-active > .bottom.panel,
-.left-panel-active > .left.panel {
-	@include translate3d(0, 0, 0);
-	visibility: visible;
-}
-
-.panel-wrapper {
-	-webkit-transition: -webkit-transform 0.5s;
-	transition: transform 0.5s;
-}
-
-.panel-wrapper:after {
-	-webkit-transition: opacity 0.5s, width 0.1s 0.4s, height 0.1s 0.4s;
-	transition: opacity 0.5s, width 0.1s 0.4s, height 0.1s 0.4s;
-}
-
-[class*=panel-active] .panel-wrapper:after {
-	-webkit-transition: opacity 0.5s 0.1s, width 0.1s, height 0.1s;
-	transition: opacity 0.5s 0.1s, width 0.1s, height 0.1s;
-}
-
-//z-index
-.panel {
-	z-index: 30;
 	
-	&.reveal {
-		z-index: 10;
-		
-		&.panel-focus {
-			z-index: 15;
-		}
-		
+}
+
+.panel-pusher {
+	-webkit-transition: -webkit-transform $trans-time;
+			transition: transform $trans-time;
+	
+	&::after {
+		@include translate3d(-9999px, 0, 0);
+		-webkit-transition: opacity $trans-time, -webkit-transform 1ms $trans-time;
+				transition: opacity $trans-time, transform 1ms $trans-time;
 	}
 	
 }
 
-.panel-wrapper {
-	z-index: 20;
+//show state
+.panel-top-active .panel-top,
+.panel-right-active .panel-right,
+.panel-bottom-active .panel-bottom,
+.panel-left-active .panel-left {
+	@include translate3d(0, 0, 0);
+	opacity: 1;
+	z-index: $panel-z + 1; //the reason for this arbitrary increase is that what will use to this track the transition end callback in the js, if we used translate w/certain animations (reveal) the calbback wounldn't be fired
+	
+	&.reveal-panel {
+		z-index: $reveal-panel-z + 1;
+	}
+
+}
+
+.panel-opening,
+.panel-focus {
+	opacity: 1; //we need to add opacity to panel-focus because if it were just on panel-opening (or above) once the user triggered close, panel would disappear
+}
+
+[class*=-active] .panel-pusher::after {
+	opacity: .5;
+	-webkit-transition: opacity $trans-time;
+			transition: opacity $trans-time;
+	@include translate3d(0, 0, 0);
 }
