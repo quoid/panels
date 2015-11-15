@@ -5,7 +5,7 @@
     var active = 1; //1 = closed, 2 = opening, 3 = open
     var timeoutLength = 350; 
     var transEnd = 'transitionend webkitTransitionEnd'; //css3 transition callbacks
-    var $panelWrap = $('.panel-pusher');
+    var $panelWrap = $('.panel-wrapper');
 
     $.panels = {
 

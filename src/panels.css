@@ -32,10 +32,10 @@
   .panel.panel-right {
     right: 0; }
 
-.panel-pusher {
+.panel-wrapper {
   background-color: inherit;
   position: relative; }
-  .panel-pusher::after {
+  .panel-wrapper::after {
     background-color: #000;
     content: "";
     min-height: 100%;
@@ -50,7 +50,7 @@
   .panel.reveal-panel {
     z-index: 150; }
 
-.panel-pusher {
+.panel-wrapper {
   z-index: 200; }
 
 .panel {
@@ -73,10 +73,10 @@
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0); }
 
-.panel-pusher {
+.panel-wrapper {
   -webkit-transition: -webkit-transform 325ms;
   transition: transform 325ms; }
-  .panel-pusher::after {
+  .panel-wrapper::after {
     -webkit-transform: translate3d(-9999px, 0, 0);
     transform: translate3d(-9999px, 0, 0);
     -webkit-transition: opacity 325ms, -webkit-transform 1ms 325ms;
@@ -100,7 +100,7 @@
 .panel-focus {
   opacity: 1; }
 
-[class*=-active] .panel-pusher::after {
+[class*=-active] .panel-wrapper::after {
   opacity: .5;
   -webkit-transition: opacity 325ms;
   transition: opacity 325ms;

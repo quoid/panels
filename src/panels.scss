@@ -59,7 +59,7 @@ $reveal-panel-z: 150;
 	
 }
 
-.panel-pusher {
+.panel-wrapper {
 	background-color: inherit;
 	position: relative;
 	
@@ -86,7 +86,7 @@ $reveal-panel-z: 150;
 	
 }
 
-.panel-pusher {
+.panel-wrapper {
 	z-index: 200;
 }
 
@@ -118,7 +118,7 @@ $reveal-panel-z: 150;
 	
 }
 
-.panel-pusher {
+.panel-wrapper {
 	-webkit-transition: -webkit-transform $trans-time;
 			transition: transform $trans-time;
 	
@@ -150,7 +150,7 @@ $reveal-panel-z: 150;
 	opacity: 1; //we need to add opacity to panel-focus because if it were just on panel-opening (or above) once the user triggered close, panel would disappear
 }
 
-[class*=-active] .panel-pusher::after {
+[class*=-active] .panel-wrapper::after {
 	opacity: .5;
 	-webkit-transition: opacity $trans-time;
 			transition: opacity $trans-time;
