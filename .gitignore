@@ -3,5 +3,6 @@
 !.gitignore
 !panels.js
 !panels.scss
+!panels.css
 !panels.min.css
 !panels.min.js
