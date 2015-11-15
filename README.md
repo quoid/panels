@@ -35,13 +35,13 @@ Below is a typical structure for using panels.
 		<button class="panel-trigger"></button>
 		<!-- panel content goes here -->
 	</div>
-	<div class="panel-pusher">
+	<div class="panel-wrapper">
 		<!-- site content goes here -->
 		<button class="panel-trigger"></button>
 	</div>
 </body>
 ```
-Both the `.panel` element and the `.panel-pusher` element should come directly after your `<body>` opening tag. You must include an element with the `.panel` class and a **single** `.panel-<direction>` class (`.panel-top` `.panel-right` `panel-bottom` `.panel-left`) element. The `.panel-pusher` element will be what you wrap your site content around; it is mandatory for panels to function.
+Both the `.panel` element and the `.panel-wrapper` element should come directly after your `<body>` opening tag. You must include an element with the `.panel` class and a **single** `.panel-<direction>` class (`.panel-top` `.panel-right` `panel-bottom` `.panel-left`) element. The `.panel-wrapper` element will be what you wrap your site content around; it is mandatory for panels to function.
 
 **Methods**
 
