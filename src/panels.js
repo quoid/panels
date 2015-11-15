@@ -3,7 +3,7 @@
     'use strict';
 
     var active = 1; //1 = closed, 2 = opening, 3 = open
-    var timeoutLength = 5000; 
+    var timeoutLength = 350; 
     var transEnd = 'transitionend webkitTransitionEnd'; //css3 transition callbacks
     var $panelWrap = $('.panel-pusher');
 
