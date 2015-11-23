@@ -64,6 +64,7 @@
 	
     <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="inc/css/prism.css">
+	<link rel="stylesheet" href="inc/css/panels.min.css">
 	
 	<link rel="stylesheet" href="main.css">
 	<link rel="canonical" href="http://yourdomain.com/">
@@ -74,132 +75,219 @@
 	
 	<body>		
 		
-		<div class="panel top slide">
-	<div id="top-content">
+		<div class="panel panel-top">
+	<div class="default">
 	<h2>Top panel w/slide animation</h2>
-	<p>Markup</p>
-	<pre class="language-markup">
-	    <code>
-<!-- 			         -->&lt;div class="panel top slide"&gt; 
+	<div class="markup">
+		<ul class='tabs cf'>
+			<li><a href='#tab1'>HTML</a></li>
+			<li><a href='#tab2'>JS</a></li>
+		</ul>
+		<div id='tab1'>
+			<pre class="language-markup">
+				<code>
+<!-- 			         -->&lt;div class="panel panel-top"&gt; 
 <!-- 			         -->	&lt;!-- panel content --&gt; 
 <!-- 			         -->&lt;div/&gt;
-	    </code>
-	</pre>
-	<button class="top-panel-trigger">Close Panel</button>
+				</code>
+			</pre>
+		</div>
+		<div id='tab2'>
+			<pre class="language-javascript">
+			    <code>		    
+<!-- 			         -->$("button").click(function(){
+<!-- 			         --> 	$.panels.show({
+<!-- 			         -->		position: 'top'
+<!-- 			         -->	});
+<!-- 			         -->});
+			    </code>
+			</pre>
+		</div>
+	</div>
+	<button id="top" class="panel-close">Close Panel</button>
 </div>
-<div id="bottom-content" class="hide">
-	<h2>Bottom panel w/push animation & full-page</h2>
-	<p>Markup</p>
-	<pre class="language-markup">
-	    <code>
-<!-- 			         -->&lt;div class="full-page panel bottom push"&gt; 
-<!-- 			         -->	&lt;!-- panel content --&gt; 
-<!-- 			         -->&lt;div/&gt;
-	    </code>
-	</pre>
-	<button class="bottom-panel-trigger">Close Panel</button>
+<div class="demo">
+	<div id="demo-menu">
+		<ul class="cf">
+			<li>
+				<a>About Us</a>
+			</li>
+			<li>
+				<a>Our Services</a>
+			</li>
+			<li>
+				<a>In The News</a>
+			</li>
+			<li>
+				<a>Contact Us</a>
+			</li>
+		</ul>
+		<button id="menu-close"><i class="icon-times"></i></button>
+	</div>
 </div>
-<div id="left-content" class="hide">
-	<h2>Left panel w/reveal animation & force-close</h2>
-	<p>Markup</p>
-	<pre class="language-markup">
-	    <code>
-<!-- 			         -->&lt;div class="force-close panel left reveal"&gt; 
-<!-- 			         -->	&lt;!-- panel content --&gt; 
-<!-- 			         -->&lt;div/&gt;
-	    </code>
-	</pre>
-	<button class="left-panel-trigger">Close Panel</button>
 </div>
-<div id="right-content" class="hide">
-	<h2>Right panel w/push animation & custom width</h2>
-	<p>Markup</p>
-	<pre class="language-markup">
-	    <code>
-<!-- 			         -->&lt;div class="panel push right"&gt; 
+<div class="panel panel-bottom push-panel">
+	<div class="default">
+	<h2>Bottom panel w/push animation + force close</h2>
+	<div class="markup">
+		<ul class='tabs cf'>
+			<li><a href='#tab3'>HTML</a></li>
+			<li><a href='#tab4'>JS</a></li>
+		</ul>
+		<div id='tab3'>
+			<pre class="language-markup">
+				<code>
+<!-- 			         -->&lt;div class="panel panel-bottom push-panel"&gt; 
 <!-- 			         -->	&lt;!-- panel content --&gt; 
 <!-- 			         -->&lt;div/&gt;
-	    </code>
-	</pre>
-	<p>CSS</p>
-	<pre>
-	    <code class="language-css">
-<!-- 			         -->.panel.right {
-<!-- 				     -->    width: 85%;
+				</code>
+			</pre>
+		</div>
+		<div id='tab4'>
+			<pre class="language-javascript">
+			    <code>		    
+<!-- 			         -->$("button").click(function(){
+<!-- 			         --> 	$.panels.show({
+<!-- 			         -->		position: 'bottom',
+<!-- 			         -->		forceClose: true
+<!-- 			         -->	});
+<!-- 			         -->});
+			    </code>
+			</pre>
+		</div>
+	</div>
+	<button id="bottom" class="panel-close">Close Panel</button>
+</div>
+<div class="demo">
+	<div id="demo-message">
+		<p>Hey, we use cookies; is that cool with you?
+		<ul class="cf">
+			<li>
+				<button id="message-close">Sure.</button>
+			</li>
+			<li>
+				<button>Nope!</button>
+			</li>
+		</ul>
+	</div>
+</div>
+</div>
+<div class="panel panel-right reveal-panel">
+	<h2>Right panel w/reveal animation + custom width</h2>
+	<div class="markup">
+		<ul class='tabs cf'>
+			<li><a href='#tab5'>HTML</a></li>
+			<li><a href='#tab6'>JS</a></li>
+			<li><a href='#tab7'>CSS</a></li>
+		</ul>
+		<div id='tab5'>
+			<pre class="language-markup">
+				<code>
+<!-- 			         -->&lt;div class="panel panel-right reveal-panel"&gt; 
+<!-- 			         -->	&lt;!-- panel content --&gt; 
+<!-- 			         -->&lt;div/&gt;
+				</code>
+			</pre>
+		</div>
+		<div id='tab6'>
+			<pre class="language-javascript">
+			    <code>		    
+<!-- 			         -->$("button").click(function(){
+<!-- 			         --> 	$.panels.show({
+<!-- 			         -->		position: 'right'
+<!-- 			         -->	});
+<!-- 			         -->});
+			    </code>
+			</pre>
+		</div>
+		<div id='tab7'>
+			<pre class="language-css">
+			    <code>
+<!-- 			         -->.panel.panel-right {
+<!-- 				     -->    width: 75%;
 <!-- 			         -->}
-	    </code>
-	</pre>
-	<button class="right-panel-trigger">Close Panel</button>
+	    		</code>
+			</pre>
+		</div>
+	</div>
+	<button id="right" class="panel-close">Close Panel</button>
 </div>
-	<div id="demo-menu" class="hide">
-	<ul class="cf">
-		<li>
-			<a>About Us</a>
-		</li>
-		<li>
-			<a>Our Services</a>
-		</li>
-		<li>
-			<a>In The News</a>
-		</li>
-		<li>
-			<a>Contact Us</a>
-		</li>
-	</ul>
-	<button class="top-panel-trigger"><i class="icon-times"></i></button>
+<div class="panel panel-left full-page">
+	<div class="default">
+	<h2>Left panel w/full-page</h2>
+	<div class="markup">
+		<ul class='tabs cf'>
+			<li><a href='#tab8'>HTML</a></li>
+			<li><a href='#tab9'>JS</a></li>
+		</ul>
+		<div id='tab8'>
+			<pre class="language-markup">
+				<code>
+<!-- 			         -->&lt;div class="panel panel-left full-page"&gt; 
+<!-- 			         -->	&lt;!-- panel content --&gt; 
+<!-- 			         -->&lt;div/&gt;
+				</code>
+			</pre>
+		</div>
+		<div id='tab9'>
+			<pre class="language-javascript">
+			    <code>		    
+<!-- 			         -->$("button").click(function(){
+<!-- 			         --> 	$.panels.show({
+<!-- 			         -->		position: 'top',
+<!-- 			         -->	});
+<!-- 			         -->});
+			    </code>
+			</pre>
+		</div>
+	</div>
+	<button id="left" class="panel-close">Close Panel</button>
 </div>
-<div id="demo-message" class="hide">
-	<p>Hey, we use cookies; is that cool with you?
-	<ul class="cf">
-		<li>
-			<button class="bottom-panel-trigger">Sure.</button>
-		</li>
-		<li>
-			<button>Nope!</button>
-		</li>
-	</ul>
-</div>
-<div id="demo-page" class="hide">
-	<button class="left-panel-trigger"><i class="icon-times"></i></button>
-	<div class="content">
-		<h3>Some Page Title!<span>October 21st, 2015</h3>
-		<figure></figure>
-		<p class="lorem">When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then she continued her way. On her way she met a copy.</p>
+<div class="demo">
+	<div id="demo-page">
+		<button id="page-example-close"><i class="icon-times"></i></button>
+		<div class="content">
+			<h3>Some Page Title!<span>October 21st, 2015</h3>
+			<figure></figure>
+			<p class="lorem">When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then she continued her way. On her way she met a copy.</p>
 <p class="lorem">The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country. But nothing the copy said could convince her and so it didn’t take long until a few insidious Copy Writers ambushed her, made her drunk with Longe and Parole and dragged her into their agency, where they abused her for their projects again and again. And if she hasn’t been rewritten, then they are still using her. Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+		</div>
 	</div>
 </div>
 </div>
 <main class="panel-wrapper">
 	<header>
 	<h1>
-		Panels
+		Panels<mark>v0.2.0</mark>
 		<span>
 			<a href="https://github.com/quoid/panels">GitHub Repo</a>
 		</span>
 	</h1>
 	<nav>
-		<a class="current top">top</a>
-		<a class="bottom">bottom</a>
-		<a class="left">left</a>
-		<a class="right">right</a>
+		<a id="current" class="top" data-close="false">top</a>
+		<a class="bottom" data-close="true">bottom</a>
+		<a class="left" data-close="false">left</a>
+		<a class="right" data-close="false">right</a>
 	</nav>
 </header>
-	<p>Panels is a small , (< 1kb gzipped), <a href="https://jquery.com">jQuery</a> library for off canvas elements.</p>
+	<p>Panels is a small (< 2kb gzipped combined) <a href="https://jquery.com">jQuery</a> library for off canvas elements.</p>
 <p>You can use the panels for <a id="menu">menus</a>, <a id="message-example">important messages</a>, <a id="page-example">off canvas page elements</a>, or any other unique and interesting ways you might come up with.</p>
-	<button class="top-panel-trigger animated">Open Panel</button>
+<p>Read the <a href="https://github.com/quoid/panels#panels">docs.</a></p>
+	<button id="top" class="panel-trigger" data-close="false">Open Panel</button>
 	<p class="lorem">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
 <p class="lorem">Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar. The Big Oxmox advised her not to do so, because there were thousands of bad Commas, wild Question Marks and devious Semikoli, but the Little Blind Text didn’t listen. She packed her seven versalia, put her initial into the belt and made herself on the way.</p>
-	<button class="top-panel-trigger animated">Open Panel</button>
+	<button id="top" class="panel-trigger" data-close="false">Open Panel</button>
 	<p class="lorem">When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then she continued her way. On her way she met a copy.</p>
 <p class="lorem">The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country. But nothing the copy said could convince her and so it didn’t take long until a few insidious Copy Writers ambushed her, made her drunk with Longe and Parole and dragged her into their agency, where they abused her for their projects again and again. And if she hasn’t been rewritten, then they are still using her. Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
 </main>
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="inc/js/jquery-1.11.3.min.js"><\/script>')</script>
+<script src="inc/js/fastclick.js"></script>
 <script src="inc/js/velocity.min.js"></script>
 <script src="inc/js/velocity.ui.min.js"></script>
 <script src="inc/js/prism.js"></script>
-<script src="inc/js/panels.js"></script>
+<script src="inc/js/panels.min.js"></script>
 <script src="inc/js/scripts.js"></script>
 	</body>
 

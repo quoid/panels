@@ -1,115 +1,121 @@
-$('nav > a').on('click', function() {
-	var x = $(this).attr('class').trim().split(' ').slice(0,1)
-	var qq = x.join()
-	var y = x.join('-') + '-content'
-	var vbx = x.join('-') + '-panel-trigger'
-	var z = '#' + y
-			
-	if (!$(this).hasClass('current')) {	
-		
-		$('main button').html('open panel').removeClass('example wobble swing');
-		$('main button').removeClass('top-panel-trigger right-panel-trigger left-panel-trigger bottom-panel-trigger');
-		$('main button').addClass(vbx);
-		$('.panel').children().addClass('hide');
-		$('.panel').removeClass('left right bottom top alt').addClass(qq);
-		$(z).removeClass('hide');
-		$('nav > a').removeClass('current');
-		$(this).addClass('current');
-		
-		if ($(this).hasClass('top')) {
-			
-			$('.panel').removeClass('push reveal force-close full-page');
-			$('.panel').addClass('slide');
-			
-		} else if ($(this).hasClass('bottom')) {
-			
-			$('.panel').removeClass('slide reveal force-close');
-			$('.panel').addClass('push full-page');
-			
-		} else if ($(this).hasClass('right')) {
-			
-			$('.panel').removeClass('slide reveal force-close full-page');
-			$('.panel').addClass('push');
-			
-		} else if ($(this).hasClass('left')) {
-			
-			$('.panel').removeClass('slide push full-page');
-			$('.panel').addClass('reveal force-close');
-			
-		}
-		
-		
-	}
-		
+$(function() {
+    FastClick.attach(document.body);
 });
 
+$(".panel-trigger").click(function(){
+	var a = $(this).attr("id");
+	var b = $(".panel-trigger").data("close");
+	$.panels.show({
+        position: a,
+        forceClose: b
+    });
+});
 
+$(".panel-close").click(function(){
+	var a = $(this).attr("id");
+	$.panels.hide({
+        position: a
+    });
+});
 
-
-
-$('#menu').on('click', function() {
-	
-	$('nav > a').removeClass('current');
-	$('main button').removeClass('right-panel-trigger bottom-panel-trigger left-panel-trigger').addClass('top-panel-trigger example').html('open menu');
-	$('.panel').removeClass('push reveal force-close full-page right bottom left alt');
-	$('.panel').addClass('top slide');
-	$('.panel').children().addClass('hide')
-	$('#demo-menu').removeClass('hide');
-	$(this).addClass('active');
-	
-	if ($('main button').hasClass('swing')) {
-		$('main button').addClass('wobble');
-		$('main button').removeClass('swing');
-	} else if ($('main button').hasClass('wobble')) {
-		$('main button').addClass('swing');
-		$('main button').removeClass('wobble');
-		
+$("nav > a").click(function(){
+	var x = $(this).attr("class");
+	var y = $(this).data("close");
+	if ($(this).is("#current")) {
+		return false;
 	} else {
-		$('main button').addClass('wobble');
+		$("nav > a").removeAttr("id");
+		$(".panel-trigger").attr("id", x);
+		$(".panel-trigger").data("close", y);
+		$(this).attr("id", "current");
 	}
 	
 });
 
-$('#message-example').on('click', function() {
-	
-	$('nav > a').removeClass('current');
-	$('main button').removeClass('right-panel-trigger top-panel-trigger left-panel-trigger').addClass('bottom-panel-trigger example').html('open message');
-	$('.panel').removeClass('push reveal full-page right top left alt');
-	$('.panel').addClass('bottom slide force-close');
-	$('.panel').children().addClass('hide')
-	$('#demo-message').removeClass('hide');
-	
-	if ($('main button').hasClass('swing')) {
-		$('main button').addClass('wobble');
-		$('main button').removeClass('swing');
-	} else if ($('main button').hasClass('wobble')) {
-		$('main button').addClass('swing');
-		$('main button').removeClass('wobble');
-		
-	} else {
-		$('main button').addClass('swing');
-	}
-	
+//tabs
+$('ul.tabs').each(function(){
+    // For each set of tabs, we want to keep track of
+    // which tab is active and it's associated content
+    var $active, $content, $links = $(this).find('a');
+
+    // If the location.hash matches one of the links, use that as the active tab.
+    // If no match is found, use the first link as the initial active tab.
+    $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
+    $active.addClass('active');
+
+    $content = $($active[0].hash);
+
+    // Hide the remaining content
+    $links.not($active).each(function () {
+      $(this.hash).hide();
+    });
+
+    // Bind the click event handler
+    $(this).on('click', 'a', function(e){
+      // Make the old tab inactive.
+      $active.removeClass('active');
+      $content.hide();
+
+      // Update the variables with the new link and content
+      $active = $(this);
+      $content = $(this.hash);
+
+      // Make the tab active.
+      $active.addClass('active');
+      $content.show();
+
+      // Prevent the anchor's default click action
+      e.preventDefault();
+    });
+  });
+
+
+$('#menu').click(function(){
+	$('.panel-top .default').css('display', 'none');
+	$('.panel-top .demo').css('display', 'block');
+	$.panels.show({
+		position: 'top'
+	});
 });
 
-$('#page-example').on('click', function() {
-	
-	$('nav > a').removeClass('current');
-	$('main button').removeClass('right-panel-trigger top-panel-trigger bottom-panel-trigger').addClass('left-panel-trigger example').html('open page');
-	$('.panel').removeClass('push slide right top bottom');
-	$('.panel').addClass('left reveal force-close full-page alt');
-	$('.panel').children().addClass('hide')
-	$('#demo-page').removeClass('hide');
-	
-	if ($('main button').hasClass('swing')) {
-		$('main button').addClass('wobble');
-		$('main button').removeClass('swing');
-	} else if ($('main button').hasClass('wobble')) {
-		$('main button').addClass('swing');
-		$('main button').removeClass('wobble');
-		
-	} else {
-		$('main button').addClass('swing');
-	}
-	
+$('#menu-close').click(function(){
+	$.panels.hide({
+		position: 'top'
+	});
+});
+
+$('.panel-trigger').click(function(){
+	$('.panel-left ').removeClass('page-ex-bg');
+	$('.panel .default').css('display', '');
+	$('.panel .demo').css('display', '');
+});
+
+$('#message-example').click(function(){
+	$('.panel-bottom .default').css('display', 'none');
+	$('.panel-bottom .demo').css('display', 'block');
+	$.panels.show({
+		position: 'bottom',
+		forceClose: true
+	});
+});
+
+$('#message-close').click(function(){
+	$.panels.hide({
+		position: 'bottom'
+	});
+});
+
+$('#page-example').click(function(){
+	$('.panel-left ').addClass('page-ex-bg');
+	$('.panel-left .default').css('display', 'none');
+	$('.panel-left .demo').css('display', 'block');
+	$.panels.show({
+		position: 'left',
+	});
+});
+
+$('#page-example-close').click(function(){
+	$.panels.hide({
+		position: 'left'
+	});
 });
